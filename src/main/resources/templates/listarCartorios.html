@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>	
+	<title>Cartorio.com</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/consultar.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/tabela.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"/>
+</head>
+<body>
+	<header class="cabecalho">
+		<nav class="menu">
+			<h1 class="titulo-principal">Cartorio.com</h1>
+			<ul class="sub-menu">
+				<li><a href="/">Cadastrar</a></li>
+				<li><a href="/listarcartorios">Listar</a></li>
+
+			</ul>
+		</nav>
+	</header>
+	<main class="principal">
+		<h1 class="titulo-form">Lista de Cartórios</h1>
+		<div class="table-div">
+			<table class="table-fill">
+				<thead>
+					<tr>
+						<th class="text-center">Nome</th>
+						<th class="text-center">Ações
+					</tr>
+				</thead>
+				<tbody class="table-hover">
+					<tr th:each="cartorio : ${cartorios}">
+						<td class="text-center"><span th:text="${cartorio.nome}"></span></td>
+						<td class="text-center"><a class="link-edit" th:href="@{/editar/{id}(id=${cartorio.id})}">Editar</a><a class="link-delete" th:href="@{/excluir/{id}(id=${cartorio.id})}">Excluir</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</main>
+	<footer class="rodape">
+		<p> Copyright &copy; Cartorio.com | Todos os direitos reservados</p>
+	</footer>
+</body>
+</html>
